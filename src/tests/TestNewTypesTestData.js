@@ -19,6 +19,7 @@ lorem@example.com
 `;
 
 export const MDPTestData = {
+	mdp: {
 		heroPart: {
 			heroTitle: "A Movie Title",
 			modeStyle: "dark",
@@ -53,4 +54,4 @@ export const MDPTestData = {
 				]
 		}
 	}
-;
+};

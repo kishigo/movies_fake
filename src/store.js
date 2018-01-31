@@ -29,11 +29,14 @@ const composedEnhancers = compose(
 );
 
 // some simple state to let us test
-let initialState = MDPTestData;
+let initialState = {
+	movies: MDPTestData
+};
 
 export const configureStore = () => {
 	let store = createStore(movieApp, initialState, composedEnhancers);
-	console.log(store.getState());
+	let state = store.getState();
+	console.log(state);
 	return store;
 };
 

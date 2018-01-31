@@ -29,8 +29,8 @@ const CellItem = ({ childComponent, id, margin, onClickFn, title, titleColor, wi
 	if (margin === undefined) {
 		margin = 10;
 	}
-	// if on
-	let onClickFn = onClickFn ? onClickFn : nullClickFn;
+	let nullClickFn = () => {};
+	let myOnClickFn = onClickFn ? onClickFn : nullClickFn;
 	let marginDistance = margin + "px";
 	let cellStyle = {
 		width: width,
@@ -44,7 +44,6 @@ const CellItem = ({ childComponent, id, margin, onClickFn, title, titleColor, wi
 	let titleStyle = {
 		color: titleColor
 	};
-	let nullClickFn = () => {};
 	/**
 	 * Expect a json object with a type field specifying which type of component will be created
 	 * @param childComponent - json defining the component
@@ -60,7 +59,7 @@ const CellItem = ({ childComponent, id, margin, onClickFn, title, titleColor, wi
 		}
 	};
 	return (
-		<div key={id} onClick={(e) => onClickFn(e, id)} style={cellStyle}>
+		<div key={id} onClick={(e) => myOnClickFn(e, id)} style={cellStyle}>
 			{generateChildComponent(childComponent)}
 			<h2 style={titleStyle}>{title}</h2>
 		</div>

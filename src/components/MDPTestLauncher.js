@@ -7,6 +7,7 @@
 import React from 'react'
 import { Route, Link } from 'react-router-dom'
 import About from "./About";
+import MDPTestContainer from "../containers/MDPTestContainer";
 
 const MDPTestLauncher = () => (
 	<div>
@@ -18,7 +19,7 @@ const MDPTestLauncher = () => (
 		</header>
 		<main>
 			<Route exact path="/" component={About}/>
-			<Route exact path="/mdp-test" component={About}/>
+			<Route exact path="/mdp-test" component={MDPTestContainer}/>
 		</main>
 	</div>
 );

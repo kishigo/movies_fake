@@ -6,8 +6,10 @@
  */
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux'
+import moviesReducer from "./movies";
 
 const movieApp = combineReducers({
+	movies: moviesReducer,
 	routing: routerReducer
 });
 

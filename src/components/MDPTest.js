@@ -20,7 +20,8 @@ const MDPTest = ({hero, actions}) => {
 	};
 
 	let heroStyle = {
-		height: "30%"
+		height: "30%",
+		width: "100%"
 	};
 	let posterStyle = {
 		width: "20%",
