@@ -9,7 +9,7 @@ import PropTypes from 'prop-types'
 import Hero from "./Hero";
 import ImageItem from "./ImageItem";
 import TitleBlock from "./TitleBlock";
-import MovieInfoRow from "./MDPDetailStrip";
+import MovieInfoRow from "./MovieInfoRow";
 
 const MDPTest = ({hero, actions}) => {
 	let backgroundColor = hero.heroPart.modeStyle === "dark" ? "black" : "white";
@@ -34,7 +34,7 @@ const MDPTest = ({hero, actions}) => {
 				<Hero heroImage={hero.heroPart.heroBackground.heroImageUrl}
 				      backgroundColor={hero.heroPart.heroBackground.backgroundColor}/>
 			</div>
-			<MovieInfoRow posterArt={hero.heroPart.heroBackground.heroImageUrl}
+			<MovieInfoRow posterArtUrl={hero.heroPart.heroBackground.heroImageUrl}
 			              title={hero.heroPart.heroTitle}
 			              releaseDate={hero.heroPart.releaseDate}
 			              durationMinutes={hero.heroPart.durationMinutes}

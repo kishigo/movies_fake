@@ -7,6 +7,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import CellItem from "./CellItem";
+import FormattedText from "./FormattedTextItem";
 
 /**
  * Presentational layout for movie information strip
@@ -21,13 +22,28 @@ import CellItem from "./CellItem";
  * @returns {*}
  * @constructor
  */
-const MovieInfoRow = ({posterArtUrl, title, releaseDate, duration, rating, description, actions, textItems}) => {
-	let generateCellItem = (posterArt) => {
-		return {imageUrl: posterArtUrl}
+const MovieInfoRow = ({posterArtUrl, title, releaseDate, durationMinutes, rating, description, actions, textItems}) => {
+	let generateCellItem = (posterArtUrl) => {
+		return {type: "ImageItem",
+			imageUrl: posterArtUrl}
 	};
 	let titleStyle = {
+		color: "white",
+		display: "inline-block"
+	};
+	let textStyle = {
 		color: "white"
 	};
+	let hours = Math.floor(durationMinutes / 60);
+	let minutes = Math.floor(durationMinutes - (hours * 60));
+	let durationString = '';
+	if (hours > 0) {
+		durationString += hours + ' hours ';
+	}
+	if (minutes > 0) {
+		durationString += minutes + 'min';
+	}
+	let movieInfoString = releaseDate + ' * ' + durationString + ' * ' + rating;
 	return (
 		<div className='rowC '>
 			<CellItem childComponent={generateCellItem(posterArtUrl)}
@@ -36,14 +52,19 @@ const MovieInfoRow = ({posterArtUrl, title, releaseDate, duration, rating, descr
 			          titleColor={'clear'}
 			          width={200}
 			          height={300}
-			          backgroundColor={"clear"}/>
-			<h1 style={titleStyle}>title</h1>
+			          backgroundColor={"clear"}
+			selected={true}/>
+			<div>
+				<h2 style={titleStyle}>{title}</h2>
+				<FormattedText text={movieInfoString} textColor={"white"} backgroundColor={"clear"} h={"20px"}/>
+				<div style={textStyle}>Test text</div>
+			</div>
 		</div>
 	)
 };
 
 MovieInfoRow.propTypes = {
-	posterArt: PropTypes.string.isRequired,
+	posterArtUrl: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
 	releaseDate: PropTypes.string.isRequired,
 	durationMinutes: PropTypes.number.isRequired,
