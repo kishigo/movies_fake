@@ -11,8 +11,8 @@ import ImageItem from "./ImageItem";
 import TitleBlock from "./TitleBlock";
 import MovieInfoRow from "./MovieInfoRow";
 
-const MDPTest = ({hero, actions}) => {
-	let backgroundColor = hero.heroPart.modeStyle === "dark" ? "black" : "white";
+const MDPTest = ({mdp, onUpdateClick, actions}) => {
+	let backgroundColor = mdp.heroPart.modeStyle === "dark" ? "black" : "white";
 	let backgroundStyle = {
 		height: "100vh",
 		width: "100%",
@@ -30,16 +30,17 @@ const MDPTest = ({hero, actions}) => {
 	};
 	return (
 		<div style={backgroundStyle}>
+			<button onClick={() => onUpdateClick()}>UpdateState</button>
 			<div style={heroStyle}>
-				<Hero heroImage={hero.heroPart.heroBackground.heroImageUrl}
-				      backgroundColor={hero.heroPart.heroBackground.backgroundColor}/>
+				<Hero heroImage={mdp.heroPart.heroBackground.heroImageUrl}
+				      backgroundColor={mdp.heroPart.heroBackground.backgroundColor}/>
 			</div>
-			<MovieInfoRow posterArtUrl={hero.heroPart.heroBackground.heroImageUrl}
-			              title={hero.heroPart.heroTitle}
-			              releaseDate={hero.heroPart.releaseDate}
-			              durationMinutes={hero.heroPart.durationMinutes}
-			              rating={hero.heroPart.rating}
-			              description={hero.heroPart.description}
+			<MovieInfoRow posterArtUrl={mdp.heroPart.heroBackground.heroImageUrl}
+			              title={mdp.heroPart.heroTitle}
+			              releaseDate={mdp.heroPart.releaseDate}
+			              durationMinutes={mdp.heroPart.durationMinutes}
+			              rating={mdp.heroPart.rating}
+			              description={mdp.heroPart.description}
 			              actions={actions}/>
 		</div>
 	)
@@ -47,7 +48,8 @@ const MDPTest = ({hero, actions}) => {
 
 MDPTest.propTypes = {
 	// TBD add more depth to type as it evolves
-	hero: PropTypes.object.isRequired,
+	mdp: PropTypes.object.isRequired,
+	onUpdateClick: PropTypes.func.isRequired,
 	actions: PropTypes.array.isRequired
 };
 
