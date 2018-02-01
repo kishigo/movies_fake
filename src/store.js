@@ -28,9 +28,12 @@ const composedEnhancers = compose(
 	...enhancers
 );
 
-// some simple state to let us test
+// Initial state keys are critical to reducers when combined, the reducers tag in the combineReducers call
+// must match with any initial state.
 let initialState = {
-	movies: MDPTestData
+	movies: MDPTestData,
+	hero: MDPTestData.mdp.heroPart,
+	sliders: MDPTestData.mdp.sliders
 };
 
 export const configureStore = () => {

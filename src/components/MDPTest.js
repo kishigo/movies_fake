@@ -7,17 +7,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Hero from "./Hero";
-import ImageItem from "./ImageItem";
-import TitleBlock from "./TitleBlock";
 import MovieInfoRow from "./MovieInfoRow";
-import PillButtonStack from "../containers/PillButtonStack";
+import SlidersContainer from "../containers/SlidersContainer";
 
 const MDPTest = ({mdp, onUpdateClick, actions}) => {
 	let backgroundColor = mdp.heroPart.modeStyle === "dark" ? "black" : "white";
 	let backgroundStyle = {
 		height: "100vh",
 		width: "100%",
-		backgroundColor: backgroundColor
 	};
 
 	let heroStyle = {
@@ -44,13 +41,11 @@ const MDPTest = ({mdp, onUpdateClick, actions}) => {
 			</div>
 			<MovieInfoRow posterArtUrl={mdp.heroPart.heroBackground.heroImageUrl}
 			              title={mdp.heroPart.heroTitle}
-			              releaseDate={mdp.heroPart.releaseDate}
-			              durationMinutes={mdp.heroPart.durationMinutes}
-			              rating={mdp.heroPart.rating}
 			              description={mdp.heroPart.description}
 			              buttons={mdp.heroPart.buttons}
 			              actions={actions}
 			              textItems={textItems}/>
+			<SlidersContainer/>
 		</div>
 	)
 };

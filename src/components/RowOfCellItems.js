@@ -112,13 +112,13 @@ const RowOfCellItems = ({id, cellItems, title, titleColor, gap, offset, visibleI
 RowOfCellItems.propTypes = {
 	id: PropTypes.string.isRequired,
 	cellItems: PropTypes.array.isRequired,
+	gap: PropTypes.number.isRequired,
+	offset: PropTypes.number.isRequired,
+	visibleItemCount: PropTypes.number.isRequired,
 	title: PropTypes.string,
 	titleColor: PropTypes.string,
 	w: PropTypes.string,
 	h: PropTypes.string,
-	gap: PropTypes.number.isRequired,
-	offset: PropTypes.number.isRequired,
-	visibleItemCount: PropTypes.number.isRequired,
 	animateScroll: PropTypes.bool,
 	onItemClickFn: PropTypes.func,
 	currentSelectedItemIndex: PropTypes.number

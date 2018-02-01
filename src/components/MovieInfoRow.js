@@ -9,21 +9,20 @@ import PropTypes from 'prop-types'
 import CellItem from "./CellItem";
 import FormattedText from "./FormattedTextItem";
 import PillButtonStack from "../containers/PillButtonStack";
+import MovieInfoBarContainer from "../containers/MovieInfoBarContainer";
 
 /**
  * Presentational layout for movie information strip
  * @param posterArtUrl - url for poster
  * @param title - string movie title
- * @param releaseDate - string year of release
- * @param duration - number of minutes
- * @param rating - mpaa ratings
  * @param description - text description
+ * @param buttons - button stack spec
  * @param actions - array of {action, onAction}
  * @param textItems - array of {subtitle: text}
  * @returns {*}
  * @constructor
  */
-const MovieInfoRow = ({posterArtUrl, title, releaseDate, durationMinutes, rating, description, buttons, actions, textItems, sliders}) => {
+const MovieInfoRow = ({posterArtUrl, title, description, buttons, actions, textItems}) => {
 	let generateCellItem = (posterArtUrl) => {
 		return {
 			type: "ImageItem",
@@ -52,15 +51,6 @@ const MovieInfoRow = ({posterArtUrl, title, releaseDate, durationMinutes, rating
 	let subtitleStyle = {
 		color: "gray"
 	};
-	let hours = Math.floor(durationMinutes / 60);
-	let minutes = Math.floor(durationMinutes - (hours * 60));
-	let durationString = '';
-	if (hours > 0) {
-		durationString += hours + ' hours ';
-	}
-	if (minutes > 0) {
-		durationString += minutes + 'min';
-	}
 	let license = "-------";
 	let director = "";
 	let producers = "";
@@ -79,16 +69,7 @@ const MovieInfoRow = ({posterArtUrl, title, releaseDate, durationMinutes, rating
 			cast = textItems.cast;
 		}
 	}
-	let generateSliders = (sliders) => {
-		if (sliders && sliders.length > 0) {
-			console.log('map sliders');
-		}
-		else {
-			console.log('no sliders');
-		}
-	};
 	// format the movieInfoString
-	let movieInfoString = releaseDate + ' * ' + durationString + ' * ' + rating;
 	return (
 		<div>
 			<div className='rowC '>
@@ -102,8 +83,7 @@ const MovieInfoRow = ({posterArtUrl, title, releaseDate, durationMinutes, rating
 				          selected={true}/>
 				<div style={titleBlockStyle}>
 					<h3 style={titleStyle}>{title}</h3>
-					<FormattedText text={movieInfoString} textColor={"white"} fontSize={8} backgroundColor={"clear"}
-					               h={"auto"}/>
+					<MovieInfoBarContainer/>
 					<FormattedText text={license} textColor={"gray"} fontSize={6} backgroundColor={"clear"} h={"auto"}/>
 					<PillButtonStack buttons={buttons}/>
 					<FormattedText text={description} textColor={"white"} fontSize={10} backgroundColor={"clear"}
@@ -122,8 +102,6 @@ const MovieInfoRow = ({posterArtUrl, title, releaseDate, durationMinutes, rating
 					<FormattedText text={cast} textColor={"white"} fontSize={10} backgroundColor={"clear"} h={"auto"}/>
 				</div>
 			</div>
-			{/*Sliders*/}
-			{generateSliders()}
 		</div>
 	)
 };
@@ -131,9 +109,6 @@ const MovieInfoRow = ({posterArtUrl, title, releaseDate, durationMinutes, rating
 MovieInfoRow.propTypes = {
 	posterArtUrl: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
-	releaseDate: PropTypes.string.isRequired,
-	durationMinutes: PropTypes.number.isRequired,
-	rating: PropTypes.string.isRequired,
 	description: PropTypes.string.isRequired,
 	actions: PropTypes.array.isRequired,
 	textItems: PropTypes.object.isRequired

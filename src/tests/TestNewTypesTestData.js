@@ -25,7 +25,7 @@ export const MDPTestData = {
 			modeStyle: "dark",
 			heroBackground: {
 				heroImageUrl: 'https://images.moviesanywhere.com/b746197ef922fd1b7bd89a6091973462/774b0ffd-f73c-4b09-94b5-e7e389cae7f3.jpg?w=2560&r=16x9',
-				backgroundColor: 'black'
+				backgroundColor: '#222222'
 			},
 			mdpPoster: {
 				posterUrl: 'MA_Header_Logo.png',

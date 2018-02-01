@@ -7,9 +7,15 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux'
 import moviesReducer from "./movies";
+import heroPart from "./HeroPart";
+import slidersReducer from "./sliders";
 
+// Relationship is the key tag must have a matchin tag in the initialState of the createStore() call or the
+// container's mapStateToProps will not have partitioned data and will have to parse state
 const movieApp = combineReducers({
 	movies: moviesReducer,
+	hero: heroPart,
+	sliders: slidersReducer,
 	routing: routerReducer
 });
 
