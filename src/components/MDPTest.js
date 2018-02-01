@@ -15,7 +15,7 @@ const MDPTest = ({hero, actions}) => {
 	let backgroundColor = hero.heroPart.modeStyle === "dark" ? "black" : "white";
 	let backgroundStyle = {
 		height: "100vh",
-		width: "100vh",
+		width: "100%",
 		backgroundColor: backgroundColor
 	};
 
