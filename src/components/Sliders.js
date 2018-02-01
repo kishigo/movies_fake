@@ -16,7 +16,15 @@ const Sliders = ({sliders}) => {
 		return (
 			<div>
 				{sliders.map((slider) => (
-					<RowOfCellItems key={slider.id} id={slider.id} title={slider.title} titleColor={"white"} cellItems={slider.cells} gap={2} offset={0} visibleItemCount={5}/>
+					<RowOfCellItems key={slider.id}
+					                id={slider.id}
+					                title={slider.title}
+					                titleColor={"white"}
+					                cellItems={slider.cells}
+					                gap={2}
+					                h={"auto"}
+					                offset={0}
+					                visibleItemCount={5}/>
 				))}
 			</div>
 		)
@@ -29,9 +37,9 @@ const Sliders = ({sliders}) => {
 	)
 };
 
+Sliders.propTypes = {
+	sliders: PropTypes.array
+};
+
 export default Sliders;
 
-
-//				{sliders.map((item, index) => (
-//					<div key={item.title} style={textStyle}>!!slider:{item.title}!!</div>
-//				))}
