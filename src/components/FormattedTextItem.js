@@ -40,7 +40,7 @@ const FormattedText = ({text, textColor, fontFace, fontSize, backgroundColor, w,
 		display: "inline-block",
 		backgroundColor: backgroundColor,
 		width: w,
-		height: h
+		height: h,
 	};
 	// wrap in div so we can assert fontStyle onto the formatted text w/o having to go into the underlying component
 	return (

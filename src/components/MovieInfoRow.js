@@ -34,6 +34,21 @@ const MovieInfoRow = ({posterArtUrl, title, releaseDate, durationMinutes, rating
 	let textStyle = {
 		color: "white"
 	};
+	let titleBlockStyle = {
+		width: "300px",
+		border: "2px solid red"
+	};
+	let directorProducerStyle = {
+		width: "100px",
+		border: "2px solid blue"
+	};
+	let castStyle = {
+		width: "200px",
+		border: "2px solid green"
+	};
+	let subtitleStyle = {
+		color: "gray"
+	};
 	let hours = Math.floor(durationMinutes / 60);
 	let minutes = Math.floor(durationMinutes - (hours * 60));
 	let durationString = '';
@@ -44,6 +59,11 @@ const MovieInfoRow = ({posterArtUrl, title, releaseDate, durationMinutes, rating
 		durationString += minutes + 'min';
 	}
 	let movieInfoString = releaseDate + ' * ' + durationString + ' * ' + rating;
+	let garbageText = "Only the Brave, based on the true story of the Granite Mountain Hotshots, is the heroic story of a team of local firefighters who - through hope, determination and sacrifice - become one of the most elite firefighting teams in the nation. Starring Josh Brolin, Miles Teller, Taylor Kitsch, Jeff Bridges, James Badge Dale and Jennifer Connelly, the firefighters forge a unique brotherhood that comes into focus as they fight a fateful fire to protect our lives, our homes and everything we hold dear.";
+	let garbageLicenseText = "All transactions are subject to applicable license terms and conditions.";
+	let directorGarbageText = "Joseph Kosinski";
+	let producersGarbageText = "Lorenzo di Bonaventura\nMolly Smith\nThad Luckinbill";
+	let castGarbageText = "Josh Brolin, Miles Teller, Jeff Bridges, Jennifer Connelly, James Badge Dale, Taylor Kitsch";
 	return (
 		<div className='rowC '>
 			<CellItem childComponent={generateCellItem(posterArtUrl)}
@@ -54,10 +74,21 @@ const MovieInfoRow = ({posterArtUrl, title, releaseDate, durationMinutes, rating
 			          height={300}
 			          backgroundColor={"clear"}
 			selected={true}/>
-			<div>
-				<h2 style={titleStyle}>{title}</h2>
-				<FormattedText text={movieInfoString} textColor={"white"} backgroundColor={"clear"} h={"20px"}/>
-				<div style={textStyle}>Test text</div>
+			<div style={titleBlockStyle}>
+				<h3 style={titleStyle}>{title}</h3>
+				<FormattedText text={movieInfoString} textColor={"white"} fontSize={8} backgroundColor={"clear"} h={"auto"}/>
+				<FormattedText text={garbageLicenseText} textColor={"gray"} fontSize={6} backgroundColor={"clear"} h={"auto"}/>
+				<FormattedText text={garbageText} textColor={"white"} fontSize={10} backgroundColor={"clear"} h={"auto"}/>
+			</div>
+			<div style={directorProducerStyle}>
+				<h5 style={subtitleStyle}>Director:</h5>
+				<FormattedText text={directorGarbageText} textColor={"white"} fontSize={10} backgroundColor={"clear"} h={"auto"}/>
+				<h5 style={subtitleStyle}>Producer:</h5>
+				<FormattedText text={producersGarbageText} textColor={"white"} fontSize={10} backgroundColor={"clear"} h={"auto"}/>
+			</div>
+			<div style={castStyle}>
+				<h5 style={subtitleStyle}>Cast:</h5>
+				<FormattedText text={castGarbageText} textColor={"white"} fontSize={10} backgroundColor={"clear"} h={"auto"}/>
 			</div>
 		</div>
 	)

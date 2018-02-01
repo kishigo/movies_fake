@@ -7,7 +7,8 @@
 import React from 'react'
 import { Route, Link } from 'react-router-dom'
 import About from "./About";
-import MDPTestContainer from "../containers/MDPTestContainer";
+// import MDPTestContainer from "../containers/MDPTestContainer";
+import MDPContainer from "../containers/MDPContainer";
 
 const MDPTestLauncher = () => (
 	<div>
@@ -15,13 +16,16 @@ const MDPTestLauncher = () => (
 			NAV-->
 			<Link to="/"><img src="MA_Header_logo.png" alt="wtf"/></Link>
 			|
-			<Link to="/mdp-test">MDPTest</Link>
+			|
+			<Link to="/mdp-container">MDPContainer</Link>
 		</header>
 		<main>
 			<Route exact path="/" component={About}/>
-			<Route exact path="/mdp-test" component={MDPTestContainer}/>
+			<Route exact path="/mdp-container" component={MDPContainer}/>
 		</main>
 	</div>
 );
 
 export default MDPTestLauncher;
+
+//			<Link to="/mdp-test-container">MDPTestContainer</Link>

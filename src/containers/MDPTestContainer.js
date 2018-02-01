@@ -5,9 +5,10 @@
  * Licensed under the MIT License. See LICENSE file in the project root for full license information.
  */
 import React from 'react'
+import propTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {openHeroContainer} from "../actions";
+import {updateMDPContainer} from "../actions";
 import MDPTest from "../components/MDPTest";
 
 class MDPTestContainer extends React.Component {
@@ -55,7 +56,10 @@ class MDPTestContainer extends React.Component {
 	render() {
 		console.log('MDPTestContainer: render');
 		return (
-			<MDPTest hero={this.cleanProps()} actions={this.actions}/>
+			<div>
+				<button onClick={() => this.props.testUpdateMDPAction()}>update</button>
+				<MDPTest hero={this.cleanProps()} actions={this.actions}/>
+			</div>
 		)
 	}
 }
@@ -70,7 +74,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	myDispatch = dispatch;
-	return bindActionCreators({}, dispatch);
+	return bindActionCreators({
+		testUpdateMDPAction: () => updateMDPContainer()
+	}, dispatch);
 };
 
 export default connect(

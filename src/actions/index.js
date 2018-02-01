@@ -13,3 +13,10 @@ export const openMDPContainer = (mdpName) => {
 		mdpName: mdpName
 	}
 };
+
+export const updateMDPContainer = () => {
+	console.log('ACTION:updateMDPContainer');
+	return {
+		type: MDPTypes.UPDATE_MDP_CONTAINER
+	}
+};
