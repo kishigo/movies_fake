@@ -10,6 +10,7 @@ import Hero from "./Hero";
 import ImageItem from "./ImageItem";
 import TitleBlock from "./TitleBlock";
 import MovieInfoRow from "./MovieInfoRow";
+import PillButtonStack from "../containers/PillButtonStack";
 
 const MDPTest = ({mdp, onUpdateClick, actions}) => {
 	let backgroundColor = mdp.heroPart.modeStyle === "dark" ? "black" : "white";
@@ -28,6 +29,12 @@ const MDPTest = ({mdp, onUpdateClick, actions}) => {
 
 		border: "2px solid red"
 	};
+	let textItems = {
+		license: mdp.heroPart.license,
+		director: mdp.heroPart.director,
+		producers: mdp.heroPart.producers,
+		cast: mdp.heroPart.cast
+	};
 	return (
 		<div style={backgroundStyle}>
 			<button onClick={() => onUpdateClick()}>UpdateState</button>
@@ -41,7 +48,9 @@ const MDPTest = ({mdp, onUpdateClick, actions}) => {
 			              durationMinutes={mdp.heroPart.durationMinutes}
 			              rating={mdp.heroPart.rating}
 			              description={mdp.heroPart.description}
-			              actions={actions}/>
+			              buttons={mdp.heroPart.buttons}
+			              actions={actions}
+			              textItems={textItems}/>
 		</div>
 	)
 };

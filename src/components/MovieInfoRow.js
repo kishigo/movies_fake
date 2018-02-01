@@ -8,6 +8,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import CellItem from "./CellItem";
 import FormattedText from "./FormattedTextItem";
+import PillButtonStack from "../containers/PillButtonStack";
 
 /**
  * Presentational layout for movie information strip
@@ -22,10 +23,12 @@ import FormattedText from "./FormattedTextItem";
  * @returns {*}
  * @constructor
  */
-const MovieInfoRow = ({posterArtUrl, title, releaseDate, durationMinutes, rating, description, actions, textItems}) => {
+const MovieInfoRow = ({posterArtUrl, title, releaseDate, durationMinutes, rating, description, buttons, actions, textItems, sliders}) => {
 	let generateCellItem = (posterArtUrl) => {
-		return {type: "ImageItem",
-			imageUrl: posterArtUrl}
+		return {
+			type: "ImageItem",
+			imageUrl: posterArtUrl
+		}
 	};
 	let titleStyle = {
 		color: "white",
@@ -58,38 +61,69 @@ const MovieInfoRow = ({posterArtUrl, title, releaseDate, durationMinutes, rating
 	if (minutes > 0) {
 		durationString += minutes + 'min';
 	}
+	let license = "-------";
+	let director = "";
+	let producers = "";
+	let cast = "";
+	if (textItems) {
+		if (textItems.license) {
+			license = textItems.license;
+		}
+		if (textItems.director) {
+			director = textItems.director;
+		}
+		if (textItems.producers) {
+			producers = textItems.producers;
+		}
+		if (textItems.cast) {
+			cast = textItems.cast;
+		}
+	}
+	let generateSliders = (sliders) => {
+		if (sliders && sliders.length > 0) {
+			console.log('map sliders');
+		}
+		else {
+			console.log('no sliders');
+		}
+	};
+	// format the movieInfoString
 	let movieInfoString = releaseDate + ' * ' + durationString + ' * ' + rating;
-	let garbageText = "Only the Brave, based on the true story of the Granite Mountain Hotshots, is the heroic story of a team of local firefighters who - through hope, determination and sacrifice - become one of the most elite firefighting teams in the nation. Starring Josh Brolin, Miles Teller, Taylor Kitsch, Jeff Bridges, James Badge Dale and Jennifer Connelly, the firefighters forge a unique brotherhood that comes into focus as they fight a fateful fire to protect our lives, our homes and everything we hold dear.";
-	let garbageLicenseText = "All transactions are subject to applicable license terms and conditions.";
-	let directorGarbageText = "Joseph Kosinski";
-	let producersGarbageText = "Lorenzo di Bonaventura\nMolly Smith\nThad Luckinbill";
-	let castGarbageText = "Josh Brolin, Miles Teller, Jeff Bridges, Jennifer Connelly, James Badge Dale, Taylor Kitsch";
 	return (
-		<div className='rowC '>
-			<CellItem childComponent={generateCellItem(posterArtUrl)}
-			          id={'dontcare'}
-			          title={''}
-			          titleColor={'clear'}
-			          width={200}
-			          height={300}
-			          backgroundColor={"clear"}
-			selected={true}/>
-			<div style={titleBlockStyle}>
-				<h3 style={titleStyle}>{title}</h3>
-				<FormattedText text={movieInfoString} textColor={"white"} fontSize={8} backgroundColor={"clear"} h={"auto"}/>
-				<FormattedText text={garbageLicenseText} textColor={"gray"} fontSize={6} backgroundColor={"clear"} h={"auto"}/>
-				<FormattedText text={garbageText} textColor={"white"} fontSize={10} backgroundColor={"clear"} h={"auto"}/>
+		<div>
+			<div className='rowC '>
+				<CellItem childComponent={generateCellItem(posterArtUrl)}
+				          id={'dontcare'}
+				          title={''}
+				          titleColor={'clear'}
+				          width={200}
+				          height={300}
+				          backgroundColor={"clear"}
+				          selected={true}/>
+				<div style={titleBlockStyle}>
+					<h3 style={titleStyle}>{title}</h3>
+					<FormattedText text={movieInfoString} textColor={"white"} fontSize={8} backgroundColor={"clear"}
+					               h={"auto"}/>
+					<FormattedText text={license} textColor={"gray"} fontSize={6} backgroundColor={"clear"} h={"auto"}/>
+					<PillButtonStack buttons={buttons}/>
+					<FormattedText text={description} textColor={"white"} fontSize={10} backgroundColor={"clear"}
+					               h={"auto"}/>
+				</div>
+				<div style={directorProducerStyle}>
+					<h5 style={subtitleStyle}>Director:</h5>
+					<FormattedText text={director} textColor={"white"} fontSize={10} backgroundColor={"clear"}
+					               h={"auto"}/>
+					<h5 style={subtitleStyle}>Producer:</h5>
+					<FormattedText text={producers} textColor={"white"} fontSize={10} backgroundColor={"clear"}
+					               h={"auto"}/>
+				</div>
+				<div style={castStyle}>
+					<h5 style={subtitleStyle}>Cast:</h5>
+					<FormattedText text={cast} textColor={"white"} fontSize={10} backgroundColor={"clear"} h={"auto"}/>
+				</div>
 			</div>
-			<div style={directorProducerStyle}>
-				<h5 style={subtitleStyle}>Director:</h5>
-				<FormattedText text={directorGarbageText} textColor={"white"} fontSize={10} backgroundColor={"clear"} h={"auto"}/>
-				<h5 style={subtitleStyle}>Producer:</h5>
-				<FormattedText text={producersGarbageText} textColor={"white"} fontSize={10} backgroundColor={"clear"} h={"auto"}/>
-			</div>
-			<div style={castStyle}>
-				<h5 style={subtitleStyle}>Cast:</h5>
-				<FormattedText text={castGarbageText} textColor={"white"} fontSize={10} backgroundColor={"clear"} h={"auto"}/>
-			</div>
+			{/*Sliders*/}
+			{generateSliders()}
 		</div>
 	)
 };
@@ -102,7 +136,7 @@ MovieInfoRow.propTypes = {
 	rating: PropTypes.string.isRequired,
 	description: PropTypes.string.isRequired,
 	actions: PropTypes.array.isRequired,
-	textItems: PropTypes.array
+	textItems: PropTypes.object.isRequired
 };
 
 export default MovieInfoRow

@@ -19,21 +19,20 @@ import PropTypes from 'prop-types'
  */
 const PillButton = ({ onClickFn, title, titleColor, width, backgroundColor, disabled }) => {
 	// CSS Styling.  There is some cruft in the style to help align
-	let widthString = width + "px";
 	// border: none to remove outline for transparent button backgroundColor
 	// outline: none to remove focus outline
 	// borderRadius: 30px for pill corners
 	let buttonStyle = {
-		padding: "20px",
+		padding: "10px",
 		border: "none",
 		outline: "none",
 		textAlign: "center",
 		color: titleColor,
 		display: "inline-block",
-		fontSize: "16px",
+		fontSize: "10px",
 		margin: "4px 2px",
 		borderRadius: "30px",
-		width: widthString,
+		width: width,
 		backgroundColor: backgroundColor,
 		zIndex: "1"
 	};
@@ -61,7 +60,7 @@ PillButton.propTypes = {
 	onClickFn: PropTypes.func.isRequired,
 	title: PropTypes.string.isRequired,
 	titleColor: PropTypes.string.isRequired,
-	width: PropTypes.number.isRequired,
+	width: PropTypes.string.isRequired,
 	backgroundColor: PropTypes.string.isRequired,
 	disabled: PropTypes.bool.isRequired
 };

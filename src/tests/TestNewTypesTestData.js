@@ -33,25 +33,48 @@ export const MDPTestData = {
 			releaseDate: "2017",
 			durationMinutes: 134,
 			rating: "PG-13",
-			description: "a long description"
+			description: "Only the Brave, based on the true story of the Granite Mountain Hotshots, is the heroic story of a team of local firefighters who - through hope, determination and sacrifice - become one of the most elite firefighting teams in the nation. Starring Josh Brolin, Miles Teller, Taylor Kitsch, Jeff Bridges, James Badge Dale and Jennifer Connelly, the firefighters forge a unique brotherhood that comes into focus as they fight a fateful fire to protect our lives, our homes and everything we hold dear.",
+			license: "All transactions are subject to applicable license terms and conditions.",
+			director: "Joseph Kosinski",
+			producers: "Lorenzo di Bonaventura\nMolly Smith\nThad Luckinbill",
+			cast: "Josh Brolin, Miles Teller, Jeff Bridges, Jennifer Connelly, James Badge Dale, Taylor Kitsch",
+			buttons: [{title: "Play"}, {title: "Preview"}, {title: "Wishlist"}]
 		},
-		testRowOfCells: {
-			title: "TestRowOfCells",
-			id: "xxx_0001",
-			cells:
-				[
-					{
-						type: "FormattedTextItem",
-						text: sampleText,
-						textColor: "red",
-						fontSize: 8
-					},
-					{
-						type: "ImageItem",
-						imageUrl:
-							"MA_Header_Logo.png"
-					}
-				]
-		}
+		sliders: [
+			{
+				title: "TestRowOfCells",
+				id: "xxx_0001",
+				cells:
+					[
+						{
+							type: "FormattedTextItem",
+							text: sampleText,
+							textColor: "red",
+							fontSize: 8
+						},
+						{
+							type: "ImageItem",
+							imageUrl: "MA_Header_Logo.png"
+						}
+					]
+			},
+			{
+				title: "AnotherTestRowOfCells",
+				id: "xxx_0002",
+				cells:
+					[
+						{
+							type: "FormattedTextItem",
+							text: sampleText,
+							textColor: "red",
+							fontSize: 8
+						},
+						{
+							type: "ImageItem",
+							imageUrl: "MA_Header_Logo.png"
+						}
+					]
+			}
+		]
 	}
 };
