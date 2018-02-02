@@ -4,6 +4,7 @@
  * Copyright (c) 2018 Kelvin Ishigo
  * Licensed under the MIT License. See LICENSE file in the project root for full license information.
  */
+import {MDPExtraActionTypes, MDPPlayActionTypes} from "../actions/ActionTypes";
 
 const sampleText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Vivamus efficitur, neque a pretium tincidunt, dolor eros gravida magna, vel ultricies dolor dui non nisl. Aliquam id aliquam urna. In facilisis ante ac hendrerit venenatis.
@@ -38,7 +39,13 @@ export const MDPTestData = {
 			director: "Joseph Kosinski",
 			producers: "Lorenzo di Bonaventura\nMolly Smith\nThad Luckinbill",
 			cast: "Josh Brolin, Miles Teller, Jeff Bridges, Jennifer Connelly, James Badge Dale, Taylor Kitsch",
-			buttons: [{title: "Play"}, {title: "Preview"}, {title: "Wishlist"}]
+			buttons: [{title: "Play"}, {title: "Preview"}, {title: "Wishlist"}],
+			actions: [
+				{action: MDPPlayActionTypes.MDP_PLAY_ACTION, title: "Play", target: "testPlayOnly"},
+				{action: MDPPlayActionTypes.MDP_PREVIEW_ACTION, title: "Preview", target: "testPreviewOnly"},
+				{action: MDPPlayActionTypes.MDP_FOLLOW_ACTION, title: "Wishlist +", target: "testFollowOnly"},
+			]
+
 		},
 		sliders: [
 			{
@@ -50,11 +57,16 @@ export const MDPTestData = {
 							type: "FormattedTextItem",
 							text: sampleText,
 							textColor: "red",
-							fontSize: 8
+							fontSize: 8,
+							actions: []
 						},
 						{
 							type: "ImageItem",
-							imageUrl: "MA_Header_Logo.png"
+							imageUrl: "MA_Header_Logo.png",
+							actions: [
+								{action: MDPPlayActionTypes.MDP_PLAY_ACTION, icon: "PlayArrow", targetUrl: "testPlayOnly"},
+								{action: MDPPlayActionTypes.MDP_PREVIEW_ACTION, icon: "PlayArrow", targetUrl: "testPreviewOnly"}
+							]
 						}
 					]
 			},
@@ -67,11 +79,15 @@ export const MDPTestData = {
 							type: "FormattedTextItem",
 							text: sampleText,
 							textColor: "red",
-							fontSize: 8
+							fontSize: 8,
+							actions: [
+								{action: MDPExtraActionTypes.MDP_JUMP_EXTRA, targetPath: "testPathOnly"}
+							]
 						},
 						{
 							type: "ImageItem",
-							imageUrl: "MA_Header_Logo.png"
+							imageUrl: "MA_Header_Logo.png",
+							actions: []
 						}
 					]
 			}

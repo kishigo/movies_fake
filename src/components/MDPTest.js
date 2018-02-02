@@ -10,7 +10,7 @@ import Hero from "./Hero";
 import MovieInfoRow from "./MovieInfoRow";
 import SlidersContainer from "../containers/SlidersContainer";
 
-const MDPTest = ({mdp, onUpdateClick, actions}) => {
+const MDPTest = ({mdp, onUpdateClick, onActionClick}) => {
 	let backgroundColor = mdp.heroPart.modeStyle === "dark" ? "black" : "white";
 	let backgroundStyle = {
 		height: "100vh",
@@ -32,6 +32,16 @@ const MDPTest = ({mdp, onUpdateClick, actions}) => {
 		producers: mdp.heroPart.producers,
 		cast: mdp.heroPart.cast
 	};
+	let generateButtonsFromActions = (actions) => {
+		return actions.map((action) => {
+			return {
+				onClickFn: onActionClick,
+				title: action.title,
+				action: action.action,
+				target: action.target
+			}
+		});
+	};
 	return (
 		<div style={backgroundStyle}>
 			<button onClick={() => onUpdateClick()}>UpdateState</button>
@@ -42,8 +52,7 @@ const MDPTest = ({mdp, onUpdateClick, actions}) => {
 			<MovieInfoRow posterArtUrl={mdp.heroPart.heroBackground.heroImageUrl}
 			              title={mdp.heroPart.heroTitle}
 			              description={mdp.heroPart.description}
-			              buttons={mdp.heroPart.buttons}
-			              actions={actions}
+			              buttons={generateButtonsFromActions(mdp.heroPart.actions)}
 			              textItems={textItems}/>
 			<SlidersContainer/>
 		</div>
@@ -54,7 +63,7 @@ MDPTest.propTypes = {
 	// TBD add more depth to type as it evolves
 	mdp: PropTypes.object.isRequired,
 	onUpdateClick: PropTypes.func.isRequired,
-	actions: PropTypes.array.isRequired
+	onActionClick: PropTypes.func.isRequired,
 };
 
 export default MDPTest

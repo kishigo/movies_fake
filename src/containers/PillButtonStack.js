@@ -8,13 +8,15 @@ import React from 'react'
 import PillButton from "../components/PillButton";
 
 let PillButtonStack = (props) => {
-	let handleClick = (e) => {
-		e.preventDefault();
-		console.log('WTF');
-	};
 	let buttonStack = props.buttons.map((button, i) => {
+		// partial function curry action and target here
+		let curryOnClickFn = (action, target) => {
+			return () => {
+				button.onClickFn(action, target);
+			}
+		};
 		return (
-			<PillButton key={i} onClickFn={handleClick} title={button.title} width={"80px"} titleColor={"white"} backgroundColor={"blue"} disabled={false}/>
+			<PillButton key={i} onClickFn={curryOnClickFn(button.action, button.target)} title={button.title} width={"80px"} titleColor={"white"} backgroundColor={"blue"} disabled={false}/>
 		)
 	});
 	return <div>

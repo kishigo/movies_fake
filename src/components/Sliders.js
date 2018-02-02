@@ -8,6 +8,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import RowOfCellItems from "./RowOfCellItems";
 
+/**
+ * Generates all sliders in the dataset that is held as an array of slider rows
+ * @param sliders
+ * @returns {*}
+ * @constructor
+ */
 const Sliders = ({sliders}) => {
 	let textStyle = {
 		color: "white"

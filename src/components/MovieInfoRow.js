@@ -22,7 +22,7 @@ import MovieInfoBarContainer from "../containers/MovieInfoBarContainer";
  * @returns {*}
  * @constructor
  */
-const MovieInfoRow = ({posterArtUrl, title, description, buttons, actions, textItems}) => {
+const MovieInfoRow = ({posterArtUrl, title, description, buttons, textItems}) => {
 	let generateCellItem = (posterArtUrl) => {
 		return {
 			type: "ImageItem",
@@ -110,7 +110,6 @@ MovieInfoRow.propTypes = {
 	posterArtUrl: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
 	description: PropTypes.string.isRequired,
-	actions: PropTypes.array.isRequired,
 	textItems: PropTypes.object.isRequired
 };
 

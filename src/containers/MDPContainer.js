@@ -6,7 +6,7 @@
  */
 import React from 'react'
 import {connect} from 'react-redux'
-import {updateMDPContainer} from "../actions";
+import {movieInfoClick, updateMDPContainer} from "../actions";
 import MDPTest from "../components/MDPTest";
 
 const mapStateToProps = state => {
@@ -15,12 +15,15 @@ const mapStateToProps = state => {
 	}
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		onUpdateClick: () => {
 			dispatch(updateMDPContainer());
 		},
-		actions: []
+		onActionClick: (action, target) => {
+			console.log('action: ' + action + ', target: ' + target);
+			dispatch(movieInfoClick(action, target));
+		}
 	}
 };
 
