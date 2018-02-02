@@ -25,7 +25,7 @@ import ImageItem from "./ImageItem";
  * @constructor
  */
 const CellItem = ({ childComponent, id, margin, onClickFn, title, titleColor, width, height, backgroundColor, disabled, selected }) => {
-	let borderStyle = (selected) ? "2px solid red" : "1px solid black";
+	let borderStyle = (selected) ? "2px solid red" : "1px solid gray";
 	if (margin === undefined) {
 		margin = 10;
 	}

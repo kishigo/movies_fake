@@ -10,21 +10,27 @@ import About from "./About";
 // import MDPTestContainer from "../containers/MDPTestContainer";
 import MDPContainer from "../containers/MDPContainer";
 
-const MDPTestLauncher = () => (
-	<div>
-		<header>
-			NAV-->
-			<Link to="/"><img src="MA_Header_logo.png" alt="wtf"/></Link>
-			|
-			|
-			<Link to="/mdp-container">MDPContainer</Link>
-		</header>
-		<main>
-			<Route exact path="/" component={About}/>
-			<Route exact path="/mdp-container" component={MDPContainer}/>
-		</main>
-	</div>
-);
+const MDPTestLauncher = () => {
+	let navTextStyle = {
+		color: "gray"
+	};
+	return (
+		<div>
+			<header>
+				NAV-->
+				<Link style={navTextStyle} to="/"><img src="MA_Header_Logo.png" alt="wtf"/></Link>
+				|
+				<Link style={navTextStyle} to="/mdp-container">MDPContainer</Link>
+			</header>
+			<main>
+				<Route exact path="/" component={About}/>
+				<Route exact path="/mdp-container" component={MDPContainer}/>
+			</main>
+
+		</div>
+
+)
+};
 
 export default MDPTestLauncher;
 
