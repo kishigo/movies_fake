@@ -33,12 +33,12 @@ export const movieInfoClick = (action, target) => {
 		case MDPPlayActionTypes.MDP_FOLLOW_ACTION:
 			console.log("movieInfoClick: action: " + action + ", target: " + target);
 			return {
-				type: MDPPlayActionTypes.MDP_PLAY_ACTION,
+				type: MDPPlayActionTypes.MDP_FOLLOW_ACTION,
 			};
 		case MDPPlayActionTypes.MDP_UNFOLLOW_ACTION:
 			console.log("movieInfoClick: action: " + action + ", target: " + target);
 			return {
-				type: MDPPlayActionTypes.MDP_PLAY_ACTION,
+				type: MDPPlayActionTypes.MDP_UNFOLLOW_ACTION,
 			};
 
 	}
