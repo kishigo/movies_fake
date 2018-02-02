@@ -10,19 +10,27 @@ import RowOfCellItems from "./RowOfCellItems";
 
 /**
  * Generates all sliders in the dataset that is held as an array of slider rows
- * @param sliders
+ * @param sliders - [] of sliders
+ * @param onSliderClick - callback for clicking on a particular slider row
  * @returns {*}
  * @constructor
  */
-const Sliders = ({sliders}) => {
+const Sliders = ({sliders, onSliderClick, onItemClick}) => {
 	let textStyle = {
 		color: "white"
 	};
 	const generateSliders = () => {
 		return (
 			<div>
-				{sliders.map((slider) => (
-					<RowOfCellItems key={slider.id}
+				{sliders.map((slider) => {
+					// curry
+					let curryOnClickFn = (sliderId, sliderTitle) => {
+						return (cellId, action, target) => {
+							onItemClick(sliderId, sliderTitle, cellId, action, target);
+						}
+					};
+					return (
+						<RowOfCellItems key={slider.id}
 					                id={slider.id}
 					                title={slider.title}
 					                titleColor={"white"}
@@ -30,8 +38,10 @@ const Sliders = ({sliders}) => {
 					                gap={2}
 					                h={"auto"}
 					                offset={0}
+					                onItemClickFn={curryOnClickFn(slider.id, slider.title)}
 					                visibleItemCount={5}/>
-				))}
+					)
+				})}
 			</div>
 		)
 	};

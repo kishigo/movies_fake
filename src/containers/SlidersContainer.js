@@ -7,6 +7,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import Sliders from "../components/Sliders";
+import SliderContainer from "./SliderContainer";
 
 const mapStateToProps = state => {
 	return {
@@ -14,9 +15,21 @@ const mapStateToProps = state => {
 	};
 };
 
+const mapDispatchToProps = dispatch => {
+	return {
+		onSliderClick: (id, title) => {
+			console.log('onSliderClick: id: ' + id + ', title: ' + title);
+		},
+		onItemClick: (sliderId, sliderTitle, cellId, action, target) => {
+			console.log('onItemClickFn: sliderId: ' + sliderId + ', sliderTitle: ' + sliderTitle +
+			', cellId: ' + cellId + ', action: ' + action + ', target: ' + target);
+		}
+	};
+};
+
 const SlidersContainer = connect(
 	mapStateToProps,
-	null
+	mapDispatchToProps
 )(Sliders);
 
 export default SlidersContainer;

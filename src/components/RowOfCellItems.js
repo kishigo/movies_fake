@@ -53,8 +53,9 @@ const RowOfCellItems = ({id, cellItems, title, titleColor, gap, offset, visibleI
 		width: "100%",
 		textAlign: "left"
 	};
-	let testClickFn = (item, index) => {
-		console.log('testClickFn: index: ' + index);
+	let myClickFn = (index, action, target) => {
+		console.log('myClickFn: index: ' + index);
+		onItemClickFn(index, action, target);
 	};
 	let renderCells = () => {
 		// Make sure currentSelectedItemIndex in range
@@ -68,12 +69,35 @@ const RowOfCellItems = ({id, cellItems, title, titleColor, gap, offset, visibleI
 		if (cellItems.length < visibleItemCount) {
 			// just generate the cells, no need to slice unless we want to do a lens type of selection
 			let renderedCellItems = cellItems.map((item, index) => {
+				// Curry myClickFn
+				let curryOnClickFn= (index, action, target) => {
+						return () => {
+							return myClickFn(index, action, target)
+						}
+					};
+				let action, target;
+				if (item.actions.length > 0) {
+					action = item.actions[0].action;
+					target = item.actions[0].target;
+					// curryOnClickFn = (index, action, target) => {
+					// 	return () => {
+					// 		return myClickFn(index, action, target)
+					// 	}
+					// }
+				}
+				else {
+					// curryOnClickFn = (index) => {
+					// 	return () => {
+					// 		return myClickFn(index)
+					// 	}
+					// }
+				}
 				// inject key, onClickFn
 				let newItem = {
 					childComponent: item,
 					id: index,
 					margin: margin,
-					onClickFn: testClickFn,
+					onClickFn: curryOnClickFn(index, action, target),
 					title: cellItems.title,
 					titleColor: cellItems.titleColor,
 					backgroundColor: "clear",

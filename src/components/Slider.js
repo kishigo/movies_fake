@@ -7,7 +7,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Slider = ({}) => {
+const Slider = ({sliders, onItemClickFn}) => {
 	return (
 		<div>Slider</div>
 	)

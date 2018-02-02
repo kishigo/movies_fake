@@ -14,6 +14,7 @@ const moviesReducer = (state = [], action) => {
 			console.log("REDUCE:UPDATE_MDP_CONTAINER");
 			let newState = {...state};
 			newState.mdp.heroPart.heroTitle = "A different Movie";
+			newState.mdp.heroPart.actions[2].title = "Wishlist -";
 			return newState;
 		default:
 			return state;

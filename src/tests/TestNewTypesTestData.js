@@ -64,8 +64,7 @@ export const MDPTestData = {
 							type: "ImageItem",
 							imageUrl: "MA_Header_Logo.png",
 							actions: [
-								{action: MDPPlayActionTypes.MDP_PLAY_ACTION, icon: "PlayArrow", targetUrl: "testPlayOnly"},
-								{action: MDPPlayActionTypes.MDP_PREVIEW_ACTION, icon: "PlayArrow", targetUrl: "testPreviewOnly"}
+								{action: MDPPlayActionTypes.MDP_PLAY_ACTION, icon: "PlayArrow", target: "testPlayOnly"},
 							]
 						}
 					]
@@ -81,7 +80,7 @@ export const MDPTestData = {
 							textColor: "red",
 							fontSize: 8,
 							actions: [
-								{action: MDPExtraActionTypes.MDP_JUMP_EXTRA, targetPath: "testPathOnly"}
+								{action: MDPExtraActionTypes.MDP_JUMP_EXTRA, target: "testPathOnly"}
 							]
 						},
 						{
